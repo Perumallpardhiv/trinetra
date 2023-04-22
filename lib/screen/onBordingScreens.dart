@@ -4,6 +4,7 @@ import 'package:trinetra/homePage.dart';
 import 'package:trinetra/introScreens/page1.dart';
 import 'package:trinetra/introScreens/page2.dart';
 import 'package:trinetra/introScreens/page3.dart';
+import 'package:trinetra/screen/signIn.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -81,7 +82,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           ),
                         )
                       : Text(
-                          "    ",
+                          "     ",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -99,11 +100,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 GestureDetector(
                   onTap: () async {
                     onLastPage
-                        ? Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                            (route) => false,
-                          )
+                        ? null
                         : _controller.nextPage(
                             duration: Duration(milliseconds: 500),
                             curve: Curves.easeIn,
@@ -113,7 +110,15 @@ class _OnBoardingState extends State<OnBoarding> {
                       ? Row(
                           children: [
                             RawMaterialButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignIn(),
+                                  ),
+                                  (route) => false,
+                                );
+                              },
                               fillColor: Colors.deepPurple,
                               focusColor: Colors.deepPurple,
                               shape: StadiumBorder(),

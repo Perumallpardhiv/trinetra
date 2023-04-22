@@ -5,6 +5,8 @@ import 'package:trinetra/firebase_options.dart';
 import 'package:trinetra/homePage.dart';
 import 'package:trinetra/introScreens/splash.dart';
 import 'package:trinetra/screen/onBordingScreens.dart';
+import 'package:trinetra/screen/signIn.dart';
+import 'package:trinetra/screen/signUp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
