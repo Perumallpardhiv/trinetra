@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trinetra/homePage.dart';
+import 'package:trinetra/screen/onBordingScreens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: OnBoarding(),
     );
   }
 }
