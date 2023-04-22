@@ -20,10 +20,11 @@ final carousels = [
 ];
 
 final abs_count = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
+  'assets/images/situps.png',
+  'assets/images/bicycle_crunches.png',
+  'assets/images/legrise.png',
+  'assets/images/flatterkicks.png',
+  'assets/images/elbowplanks.png',
 ];
 
 final quads_count = [
@@ -184,7 +185,10 @@ class _GymState extends State<Gym> {
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: padd[index]),
-                                child: Image.asset(carousels[index]),
+                                child: Image.asset(
+                                  carousels[index],
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           );
