@@ -39,7 +39,7 @@ class _OnBoardingState extends State<OnBoarding> {
           Container(
             alignment: Alignment.topRight,
             child: Padding(
-              padding: const EdgeInsets.only(top: 20, right: 10),
+              padding: const EdgeInsets.only(top: 30, right: 20),
               child: TextButton(
                 onPressed: () {
                   _controller.animateToPage(
@@ -81,7 +81,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           ),
                         )
                       : Text(
-                          "",
+                          "    ",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,

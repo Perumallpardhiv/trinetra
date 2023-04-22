@@ -24,24 +24,21 @@ class _Page2State extends State<Page2> {
               "Scan your body, unlock your potential",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 fontFamily: "font2",
                 color: Colors.deepPurple,
               ),
             ),
           ),
-          SizedBox(
-            height: 5,
-          ),
           Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40, top: 40),
+            padding: const EdgeInsets.only(left: 50, right: 50),
             child: Text(
               "Take care of your body. It's the only place you have to live",
               maxLines: 2,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 16,
                 color: Colors.grey[800],
               ),
             ),

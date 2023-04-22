@@ -31,28 +31,27 @@ class _Page3State extends State<Page3> {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           Padding(
             padding: EdgeInsets.all(30),
             child: Lottie.asset(
               'assets/lottie/graph.json',
-              height: size.height * 0.6,
-              width: size.width * 0.7,
+              height: size.height * 0.3,
               fit: BoxFit.cover,
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 15,
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
             child: Text(
               "The secret of your success is found in your daily routine",
               maxLines: 2,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 16,
                 color: Colors.grey[800],
               ),
             ),

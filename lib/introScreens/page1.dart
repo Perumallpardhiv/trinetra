@@ -49,7 +49,7 @@ class _Page1State extends State<Page1> {
               maxLines: 2,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 13,
+                fontSize: 16,
                 color: Colors.grey[800],
               ),
             ),
