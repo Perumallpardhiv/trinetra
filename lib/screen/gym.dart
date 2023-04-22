@@ -28,38 +28,25 @@ final abs_count = [
 ];
 
 final quads_count = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
+  'assets/images/lunges1.png',
+  'assets/images/highKnees.jpg',
+  'assets/images/climbers.jpg',
 ];
 
 final glutes_count = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-];
-
-final triceps_count = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
+  'assets/images/squats.png',
+  'assets/images/donkeykick.png',
+  'assets/images/sidelegraise.png',
 ];
 
 final back_count = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
+  'assets/images/superman.jpg',
+  'assets/images/pushups.jpg',
 ];
 
 final chest_count = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
+  'assets/images/plankroatation.png',
+  'assets/images/shoulder_taps.png',
 ];
 
 class _GymState extends State<Gym> {
@@ -369,7 +356,7 @@ class _GymState extends State<Gym> {
                     Padding(
                       padding: const EdgeInsets.only(top: 15, left: 15),
                       child: Text(
-                        "Triceps",
+                        "Chest",
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 22.5,
@@ -387,7 +374,7 @@ class _GymState extends State<Gym> {
                           shrinkWrap: true,
                           physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
-                          itemCount: triceps_count.length,
+                          itemCount: chest_count.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.symmetric(
@@ -410,7 +397,7 @@ class _GymState extends State<Gym> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Image.asset(
-                                    triceps_count[index],
+                                    chest_count[index],
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -465,60 +452,6 @@ class _GymState extends State<Gym> {
                                   ),
                                   child: Image.asset(
                                     back_count[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15, left: 15),
-                      child: Text(
-                        "Chest",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                          fontSize: 22.5,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "font6",
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 150,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: chest_count.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5,
-                              ),
-                              child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple.shade100,
-                                        Colors.deepPurple.shade50,
-                                      ],
-                                      begin: Alignment.center,
-                                      end: Alignment.topRight,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    chest_count[index],
                                     fit: BoxFit.cover,
                                   ),
                                 ),

@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
-  var index = 2;
+  var index = 1;
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
   final items = <Widget>[
