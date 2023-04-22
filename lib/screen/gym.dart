@@ -154,7 +154,7 @@ class _GymState extends State<Gym> {
           ),
           Align(
             child: Padding(
-              padding: EdgeInsets.only(top: 100, bottom: 80),
+              padding: EdgeInsets.only(top: 100),
               child: SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 child: Column(
@@ -524,6 +524,7 @@ class _GymState extends State<Gym> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 100),
                   ],
                 ),
               ),
