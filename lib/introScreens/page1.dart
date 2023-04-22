@@ -28,14 +28,17 @@ class _Page1State extends State<Page1> {
           ),
           Padding(
             padding: const EdgeInsets.all(25.0),
-            child: Text(
-              "Trinetra",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                fontFamily: "font1",
-                color: Colors.deepPurple,
+            child: Hero(
+              tag: "hero",
+              child: Text(
+                "TRINETRA",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "font1",
+                  color: Colors.deepPurple,
+                ),
               ),
             ),
           ),
