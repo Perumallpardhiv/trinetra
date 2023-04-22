@@ -27,14 +27,15 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     _animationController.addListener(() {
       count++;
       setState(() {});
-      count == 18
-          ? Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => OnBoarding(),
-              ),
-            )
-          : null;
+
+      _animationController.isCompleted
+        ? Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OnBoarding(),
+            ),
+          )
+        : null;
     });
 
     Timer(
@@ -54,7 +55,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
             scale: _animation.value,
             child: AnimatedTextKit(
               isRepeatingAnimation: true,
-              totalRepeatCount: 2,
+              totalRepeatCount: 1,
               animatedTexts: [
                 TyperAnimatedText(
                   "TRINETRA",

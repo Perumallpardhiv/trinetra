@@ -111,13 +111,20 @@ class _OnBoardingState extends State<OnBoarding> {
                   },
                   child: onLastPage
                       ? Row(
-                          children: const [
-                            Text(
-                              "START",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                          children: [
+                            RawMaterialButton(
+                              onPressed: () {},
+                              fillColor: Colors.deepPurple,
+                              focusColor: Colors.deepPurple,
+                              shape: StadiumBorder(),
+                              elevation: 0,
+                              child: Text(
+                                "SIGN IN",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ],
