@@ -158,10 +158,8 @@ class _OnBoardingState extends State<OnBoarding> {
                                     SharedPreferences shares =
                                         await SharedPreferences.getInstance();
 
-                                    var email = shares.getString('email') ??
-                                        "abc@gmail.com";
-                                    var pwd =
-                                        shares.getString('pwd') ?? "123123";
+                                    var email = shares.getString('email');
+                                    var pwd = shares.getString('pwd');
 
                                     await authClass.emailSignIn(
                                       context,

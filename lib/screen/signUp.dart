@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trinetra/auth/auth.dart';
 
 class SignUp extends StatefulWidget {
@@ -252,6 +253,13 @@ class _SignUpState extends State<SignUp> {
                                     context,
                                     _emailCont.text.trim(),
                                     _pwdCont.text.trim());
+
+                                final prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.setBool('isLogged', true);
+                                prefs.setString(
+                                    'email', _emailCont.text.trim());
+                                prefs.setString('pwd', _pwdCont.text.trim());
 
                                 // add user details for profile page
                                 var user = FirebaseAuth.instance.currentUser;
