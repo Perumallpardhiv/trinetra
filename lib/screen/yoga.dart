@@ -11,10 +11,10 @@ final yoga = [
   'assets/images/y1.png',
   'assets/images/y2.png',
   'assets/images/y3.png',
-  'assets/images/y4.webp',
+  'assets/images/84.png',
   'assets/images/y5.png',
-  'assets/images/y6.jpg',
-  'assets/images/y7.jpg',
+  'assets/images/y6.pnh',
+  'assets/images/y7.png',
 ];
 
 class _YogaState extends State<Yoga> {

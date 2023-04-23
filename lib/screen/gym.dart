@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:giff_dialog/giff_dialog.dart';
 import 'package:trinetra/abs/bicycle_crunches.dart';
 import 'package:trinetra/abs/elbow_plank.dart';
 import 'package:trinetra/abs/flutter_kicks.dart';
@@ -242,10 +243,30 @@ class _GymState extends State<Gym> {
                               child: GestureDetector(
                                 onTap: () {
                                   index == 0
-                                      ? Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => SitUps(),
+                                      ? showDialog(
+                                          context: context,
+                                          builder: (_) => AssetGiffDialog(
+                                            title: const Text(
+                                              'Sit Ups',
+                                              style: TextStyle(
+                                                fontSize: 22.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            entryAnimation:
+                                                EntryAnimation.bottomRight,
+                                            onOkButtonPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SitUps(),
+                                                ),
+                                              );
+                                            },
+                                            image: Image.asset(
+                                              'assets/images/situps.gif',
+                                            ),
                                           ),
                                         )
                                       : index == 1
@@ -265,21 +286,64 @@ class _GymState extends State<Gym> {
                                                   ),
                                                 )
                                               : index == 3
-                                                  ? Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            FlutterKicks(),
+                                                  ? showDialog(
+                                                      context: context,
+                                                      builder: (_) =>
+                                                          AssetGiffDialog(
+                                                        title: const Text(
+                                                          'Flutter Kicks',
+                                                          style: TextStyle(
+                                                            fontSize: 22.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                        entryAnimation:
+                                                            EntryAnimation
+                                                                .bottomRight,
+                                                        onOkButtonPressed: () {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  FlutterKicks(),
+                                                            ),
+                                                          );
+                                                        },
+                                                        image: Image.asset(
+                                                          'assets/images/flatterkicksgif.gif',
+                                                        ),
                                                       ),
                                                     )
-                                                  : Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ElbowPlank(),
+                                                  : showDialog(
+                                                      context: context,
+                                                      builder: (_) =>
+                                                          AssetGiffDialog(
+                                                        title: const Text(
+                                                          'Elbow Plank',
+                                                          style: TextStyle(
+                                                            fontSize: 22.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                        entryAnimation:
+                                                            EntryAnimation
+                                                                .bottomRight,
+                                                        onOkButtonPressed: () {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  ElbowPlank(),
+                                                            ),
+                                                          );
+                                                        },
+                                                        image: Image.asset(
+                                                          'assets/images/elbowplank.gif',
+                                                        ),
                                                       ),
                                                     );
-                                  ;
                                 },
                                 child: Material(
                                   elevation: 3,
@@ -418,10 +482,30 @@ class _GymState extends State<Gym> {
                               child: GestureDetector(
                                 onTap: () {
                                   index == 0
-                                      ? Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Squates(),
+                                      ? showDialog(
+                                          context: context,
+                                          builder: (_) => AssetGiffDialog(
+                                            title: const Text(
+                                              'Squates',
+                                              style: TextStyle(
+                                                fontSize: 22.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            entryAnimation:
+                                                EntryAnimation.bottomRight,
+                                            onOkButtonPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Squates(),
+                                                ),
+                                              );
+                                            },
+                                            image: Image.asset(
+                                              'assets/images/sqauts.gif',
+                                            ),
                                           ),
                                         )
                                       : index == 1
@@ -498,11 +582,30 @@ class _GymState extends State<Gym> {
                               child: GestureDetector(
                                 onTap: () {
                                   index == 0
-                                      ? Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                PlankRotations(),
+                                      ? showDialog(
+                                          context: context,
+                                          builder: (_) => AssetGiffDialog(
+                                            title: const Text(
+                                              'Plank Rotation',
+                                              style: TextStyle(
+                                                fontSize: 22.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            entryAnimation:
+                                                EntryAnimation.bottomRight,
+                                            onOkButtonPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      PlankRotations(),
+                                                ),
+                                              );
+                                            },
+                                            image: Image.asset(
+                                              'assets/images/PlankRotation.gif',
+                                            ),
                                           ),
                                         )
                                       : Navigator.push(
