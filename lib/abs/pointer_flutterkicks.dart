@@ -4,7 +4,6 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:trinetra/translator.dart';
 import 'package:trinetra/values.dart';
 
-
 class PosePainter_flutterKicks extends CustomPainter {
   final List<Pose> poses;
   final Size absoluteImageSize;
@@ -79,7 +78,7 @@ class PosePainter_flutterKicks extends CustomPainter {
       }
       print("Angle: $angle");
       print("Angle1: $angle1");
-      if (angle == angle1 && stage != "down") {
+      if (angle > angle1 + 20 && stage != "down") {
         stage = "down";
         color = Colors.green;
       }
@@ -90,7 +89,7 @@ class PosePainter_flutterKicks extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if (angle == angle1 && stage == "down") {
+      if (angle + 20 < angle1 && stage == "down") {
         counter++;
         stage = "up";
       }

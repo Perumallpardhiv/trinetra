@@ -48,44 +48,45 @@ class PosePainter_legRise extends CustomPainter {
       ..color = Colors.yellow;
 
     for (var pose in poses) {
-      final left1 = pose.landmarks[leftpos1]!; //hip
-      final left2 = pose.landmarks[leftpos2]!; //knee
-      final left3 = pose.landmarks[leftpos3]!; //ankle
+      final left0 = pose.landmarks[leftpos1]!; //shoulder
+      final left1 = pose.landmarks[leftpos2]!; //hip
+      final left2 = pose.landmarks[leftpos3]!; //ankle
 
-      final right1 = pose.landmarks[rightpos1]!; //hip
-      final right2 = pose.landmarks[rightpos2]!; //knee
-      final right3 = pose.landmarks[rightpos3]!; //ankle
+      final right0 = pose.landmarks[rightpos1]!; //shoulder
+      final right1 = pose.landmarks[rightpos2]!; //hip
+      final right2 = pose.landmarks[rightpos3]!; //ankle
 
-      angle = (atan2(left3.y - left1.y, left3.x - left1.x)) * 180 ~/ PI;
+      angle = (atan2(left1.y - left0.y, left1.x - left0.x) -
+              atan2(left2.y - left1.y, left2.x - left1.x)) *
+          180 ~/
+          PI;
 
-      angle1 = (atan2(right3.y - right1.y, right3.x - right1.x)) * 180 ~/ PI;
+       angle1 = (atan2(right1.y - right0.y, right1.x - right0.x) -
+              atan2(right2.y - right1.y, right2.x - right1.x)) *
+          180 ~/
+          PI;
 
       if (angle < 0) {
-        print("Added 360");
         angle = angle + 360;
       }
 
       if (angler < 0) {
-        print("Added 360");
         angler = angler + 360;
       }
 
       if (angle1 < 0) {
-        print("Added 360");
         angle1 = angle1 + 360;
       }
 
       if (angle1r < 0) {
-        print("Added 360");
         angle1r = angle1r + 360;
       }
 
       print("Angle: $angle");
       print("Angle1: $angle1");
 
-      if ((angle > 0 && angle < 40 && stage != "down") &&
-          (angle1 > 0 && angle1 < 40 && stage != "down") &&
-          (angle == angle1)) {
+      if ((angle > 55 && angle < 70 && stage != "down") &&
+          (angle1 > 55 && angle1 < 70 && stage != "down")) {
         stage = "down";
         color = Colors.green;
       }
@@ -96,8 +97,8 @@ class PosePainter_legRise extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if ((angle > 65 && angle < 105 && stage == "down") &&
-          (angle1 > 65 && angle1 < 105 && stage == "down") && (angle == angle1)) {
+      if ((angle > 340 && angle < 360 && stage == "down") &&
+          (angle1 > 340 && angle1 < 360 && stage == "down")) {
         counter++;
         stage = "up";
       }
@@ -122,8 +123,8 @@ class PosePainter_legRise extends CustomPainter {
 
       canvas.drawCircle(
         Offset(
-          translateX(left3.x, rotation, size, absoluteImageSize),
-          translateY(left3.y, rotation, size, absoluteImageSize),
+          translateX(left0.x, rotation, size, absoluteImageSize),
+          translateY(left0.y, rotation, size, absoluteImageSize),
         ),
         1,
         dot,
@@ -149,8 +150,8 @@ class PosePainter_legRise extends CustomPainter {
 
       canvas.drawCircle(
         Offset(
-          translateX(right3.x, rotation, size, absoluteImageSize),
-          translateY(right3.y, rotation, size, absoluteImageSize),
+          translateX(right0.x, rotation, size, absoluteImageSize),
+          translateY(right0.y, rotation, size, absoluteImageSize),
         ),
         1,
         dot,

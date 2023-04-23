@@ -5,6 +5,8 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:trinetra/translator.dart';
 import 'package:trinetra/values.dart';
 
+late Timer timetime;
+
 class PosePainter_elbowPlank extends CustomPainter {
   final List<Pose> poses;
   final Size absoluteImageSize;
@@ -57,16 +59,8 @@ class PosePainter_elbowPlank extends CustomPainter {
               atan2(landmark.y - landmark2.y, landmark.x - landmark2.x)) *
           180 ~/
           PI;
-      angle1 = (atan2(landmark5.y - landmark2.y, landmark5.x - landmark2.x) -
-              atan2(landmark.y - landmark2.y, landmark.x - landmark2.x)) *
-          180 ~/
-          PI;
 
-      angler = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
-              atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
-          180 ~/
-          PI;
-      angle1r = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
+      angle1 = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
               atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
           180 ~/
           PI;
@@ -92,12 +86,16 @@ class PosePainter_elbowPlank extends CustomPainter {
       // }
       print("Angle: $angle");
       print("Angle1: $angle1");
-      if (((angle > minangle && angle < minangle2) &&
-              (angle1 > minangle && angle1 < minangle2)) ||
-          ((angler > minangle && angler < minangle2) &&
-              (angle1r > minangle && angle1r < minangle2))) {
+      if (stage != "down" &&
+          angle > 265 &&
+          angle < 285 &&
+          angle1 > 265 &&
+          angle1 < 285) {
+        stage = "down";
         color = Colors.green;
-        startTimer();
+        timetime = Timer.periodic(Duration(seconds: 1), (time) {
+          counter++;
+        });
       }
       if (stage == "down") {
         color = Colors.green;
@@ -106,13 +104,11 @@ class PosePainter_elbowPlank extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      // if (((angle > maxangle && angle < maxangle2 && stage == "down") &&
-      //         (angle1 > maxangle && angle1 < maxangle2 && stage == "down")) ||
-      //     ((angler > maxangle && angler < maxangle2 && stage == "down") &&
-      //         (angle1r > maxangle && angle1r < maxangle2 && stage == "down"))) {
-      //   counter++;
-      //   stage = "up";
-      // }
+      if (stage == "down" &&
+          ((angle < 265 || angle > 285) || (angle1 < 265 && angle1 > 285))) {
+        timetime.cancel();
+        stage == "up";
+      }
 
       canvas.drawCircle(
         Offset(
@@ -193,11 +189,5 @@ class PosePainter_elbowPlank extends CustomPainter {
   bool shouldRepaint(covariant PosePainter_elbowPlank oldDelegate) {
     return oldDelegate.absoluteImageSize != absoluteImageSize ||
         oldDelegate.poses != poses;
-  }
-
-  void startTimer() {
-    Timer.periodic(Duration(seconds: 1), (time) {
-      stage == "down" ? counter++ : time.cancel();
-    });
   }
 }

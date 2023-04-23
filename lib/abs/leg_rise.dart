@@ -53,12 +53,12 @@ class _LegRiseState extends State<LegRise> {
     if (isBusy) return;
     isBusy = true;
     final poses = await poseDetector.processImage(inputImage);
-    final PoseLandmarkType leftpos1 = PoseLandmarkType.leftHip;
-    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftKnee;
+    final PoseLandmarkType leftpos1 = PoseLandmarkType.leftShoulder;
+    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftHip;
     final PoseLandmarkType leftpos3 = PoseLandmarkType.leftAnkle;
 
-    final PoseLandmarkType rightpos1 = PoseLandmarkType.rightHip;
-    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightKnee;
+    final PoseLandmarkType rightpos1 = PoseLandmarkType.rightShoulder;
+    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightHip;
     final PoseLandmarkType rightpos3 = PoseLandmarkType.rightAnkle;
 
     // final faces = await faceDetector.processImage(inputImage);
