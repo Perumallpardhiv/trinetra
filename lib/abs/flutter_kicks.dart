@@ -53,12 +53,12 @@ class _FlutterKicksState extends State<FlutterKicks> {
     isBusy = true;
     final poses = await poseDetector.processImage(inputImage);
     final PoseLandmarkType leftpos1 = PoseLandmarkType.leftHip;
-    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftAnkle;
-    final PoseLandmarkType leftpos3 = PoseLandmarkType.leftKnee;
+    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftKnee;
+    final PoseLandmarkType leftpos3 = PoseLandmarkType.leftAnkle;
 
     final PoseLandmarkType rightpos1 = PoseLandmarkType.rightHip;
-    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightAnkle;
-    final PoseLandmarkType rightpos3 = PoseLandmarkType.rightKnee;
+    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightKnee;
+    final PoseLandmarkType rightpos3 = PoseLandmarkType.rightAnkle;
 
     // final faces = await faceDetector.processImage(inputImage);
     if (inputImage.inputImageData?.size != null &&

@@ -4,8 +4,7 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:trinetra/translator.dart';
 import 'package:trinetra/values.dart';
 
-
-class PosePainter_flutterKicks extends CustomPainter {
+class PosePainter_Squates extends CustomPainter {
   final List<Pose> poses;
   final Size absoluteImageSize;
   final InputImageRotation rotation;
@@ -20,7 +19,7 @@ class PosePainter_flutterKicks extends CustomPainter {
   final PoseLandmarkType rightpos2;
   final PoseLandmarkType rightpos3;
 
-  PosePainter_flutterKicks(
+  PosePainter_Squates(
     this.poses,
     this.absoluteImageSize,
     this.rotation,
@@ -49,37 +48,39 @@ class PosePainter_flutterKicks extends CustomPainter {
       ..color = Colors.yellow;
 
     for (var pose in poses) {
-      final landmark = pose.landmarks[leftpos1]!; //hip
-      final landmark2 = pose.landmarks[leftpos2]!; //knee
-      final landmark5 = pose.landmarks[leftpos3]!; //ankel
+      final landmark = pose.landmarks[leftpos1]!; // left shoulder
+      final landmark2 = pose.landmarks[leftpos2]!; // left elbow
+      final landmark5 = pose.landmarks[leftpos3]!; // left wrist
 
-      final landmark1 = pose.landmarks[rightpos1]!; // hip
-      final landmark3 = pose.landmarks[rightpos2]!; // knee
-      final landmark4 = pose.landmarks[rightpos3]!; // ankel
+      final landmark1 = pose.landmarks[rightpos1]!; // rightShoulder
+      final landmark3 = pose.landmarks[rightpos2]!; // rightElbow
+      final landmark4 = pose.landmarks[rightpos3]!; // rightWrist
 
-      angle = (atan2(landmark.y - landmark5.y, landmark.x - landmark5.x)) *
+      angle = (atan2(landmark5.y - landmark2.y, landmark5.x - landmark2.x) -
+              atan2(landmark.y - landmark2.y, landmark.x - landmark2.x)) *
           180 ~/
           PI;
-      angle1 = (atan2(landmark1.y - landmark4.y, landmark1.x - landmark4.x)) *
+      angle1 = (atan2(landmark5.y - landmark2.y, landmark5.x - landmark2.x) -
+              atan2(landmark.y - landmark2.y, landmark.x - landmark2.x)) *
           180 ~/
           PI;
 
       if (angle < 0) {
         angle = angle + 360;
       }
-
-      if (angler < 0) {
-        angler = angler + 360;
-      }
+      // if (angle > 180) {
+      //   angle = 360 - angle;
+      // }
       if (angle1 < 0) {
         angle1 = angle1 + 360;
       }
-      if (angle1r < 0) {
-        angle1r = angle1r + 360;
-      }
+      // if (angle1 > 180) {
+      //   angle1 = 360 - angle1;
+      // }
       print("Angle: $angle");
       print("Angle1: $angle1");
-      if (angle == angle1 && stage != "down") {
+      if ((angle > 75 && angle < 80 && stage != "down") &&
+          (angle1 > 75 && angle1 < 80 && stage != "down")) {
         stage = "down";
         color = Colors.green;
       }
@@ -90,7 +91,8 @@ class PosePainter_flutterKicks extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if (angle == angle1 && stage == "down") {
+      if ((angle > 160 && angle < 180 && stage == "down") &&
+          (angle1 > 160 && angle1 < 180 && stage == "down")) {
         counter++;
         stage = "up";
       }
@@ -171,7 +173,7 @@ class PosePainter_flutterKicks extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant PosePainter_flutterKicks oldDelegate) {
+  bool shouldRepaint(covariant PosePainter_Squates oldDelegate) {
     return oldDelegate.absoluteImageSize != absoluteImageSize ||
         oldDelegate.poses != poses;
   }

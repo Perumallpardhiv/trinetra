@@ -4,8 +4,7 @@ import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:trinetra/translator.dart';
 import 'package:trinetra/values.dart';
 
-
-class PosePainter_flutterKicks extends CustomPainter {
+class PosePointer_SideLegRises extends CustomPainter {
   final List<Pose> poses;
   final Size absoluteImageSize;
   final InputImageRotation rotation;
@@ -20,7 +19,7 @@ class PosePainter_flutterKicks extends CustomPainter {
   final PoseLandmarkType rightpos2;
   final PoseLandmarkType rightpos3;
 
-  PosePainter_flutterKicks(
+  PosePointer_SideLegRises(
     this.poses,
     this.absoluteImageSize,
     this.rotation,
@@ -49,20 +48,29 @@ class PosePainter_flutterKicks extends CustomPainter {
       ..color = Colors.yellow;
 
     for (var pose in poses) {
-      final landmark = pose.landmarks[leftpos1]!; //hip
+      final landmark1 = pose.landmarks[leftpos1]!; //hip
       final landmark2 = pose.landmarks[leftpos2]!; //knee
-      final landmark5 = pose.landmarks[leftpos3]!; //ankel
+      final landmark3 = pose.landmarks[leftpos3]!; //ankle
 
-      final landmark1 = pose.landmarks[rightpos1]!; // hip
-      final landmark3 = pose.landmarks[rightpos2]!; // knee
-      final landmark4 = pose.landmarks[rightpos3]!; // ankel
+      final landmark4 = pose.landmarks[rightpos1]!; //hip
+      final landmark5 = pose.landmarks[rightpos2]!; //knee
+      final landmark6 = pose.landmarks[rightpos3]!; //ankle
 
-      angle = (atan2(landmark.y - landmark5.y, landmark.x - landmark5.x)) *
+      angle = (atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
           180 ~/
           PI;
-      angle1 = (atan2(landmark1.y - landmark4.y, landmark1.x - landmark4.x)) *
+      angle1 = (atan2(landmark4.y - landmark6.y, landmark4.x - landmark6.x)) *
           180 ~/
           PI;
+
+      // angler = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
+      //         atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
+      //     180 ~/
+      //     PI;
+      // angle1r = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
+      //         atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
+      //     180 ~/
+      //     PI;
 
       if (angle < 0) {
         angle = angle + 360;
@@ -71,15 +79,30 @@ class PosePainter_flutterKicks extends CustomPainter {
       if (angler < 0) {
         angler = angler + 360;
       }
+      // if (angle > 180) {
+      //   angle = 360 - angle;
+      // }
       if (angle1 < 0) {
         angle1 = angle1 + 360;
       }
       if (angle1r < 0) {
         angle1r = angle1r + 360;
       }
+      // if (angle1 > 180) {
+      //   angle1 = 360 - angle1;
+      // }
       print("Angle: $angle");
       print("Angle1: $angle1");
-      if (angle == angle1 && stage != "down") {
+      if ((angle > 0 &&
+              angle < 20 &&
+              angle1 > 75 &&
+              angle1 < 105 &&
+              stage != "down") ||
+          (angle1 > 0 &&
+              angle1 < 20 &&
+              angle > 75 &&
+              angle < 105 &&
+              stage != "down")) {
         stage = "down";
         color = Colors.green;
       }
@@ -90,19 +113,19 @@ class PosePainter_flutterKicks extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if (angle == angle1 && stage == "down") {
+      if ((angle > 0 &&
+              angle < 20 &&
+              angle1 > 75 &&
+              angle1 < 105 &&
+              stage == "down") ||
+          (angle1 > 0 &&
+              angle1 < 20 &&
+              angle > 75 &&
+              angle < 105 &&
+              stage == "down")) {
         counter++;
         stage = "up";
       }
-
-      canvas.drawCircle(
-        Offset(
-          translateX(landmark.x, rotation, size, absoluteImageSize),
-          translateY(landmark.y, rotation, size, absoluteImageSize),
-        ),
-        1,
-        dot,
-      );
 
       canvas.drawCircle(
         Offset(
@@ -149,6 +172,15 @@ class PosePainter_flutterKicks extends CustomPainter {
         dot,
       );
 
+      canvas.drawCircle(
+        Offset(
+          translateX(landmark6.x, rotation, size, absoluteImageSize),
+          translateY(landmark6.y, rotation, size, absoluteImageSize),
+        ),
+        1,
+        dot,
+      );
+
       void paintLine(
           PoseLandmarkType type1, PoseLandmarkType type2, Paint paintType) {
         PoseLandmark joint1 = pose.landmarks[type1]!;
@@ -171,7 +203,7 @@ class PosePainter_flutterKicks extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant PosePainter_flutterKicks oldDelegate) {
+  bool shouldRepaint(covariant PosePointer_SideLegRises oldDelegate) {
     return oldDelegate.absoluteImageSize != absoluteImageSize ||
         oldDelegate.poses != poses;
   }

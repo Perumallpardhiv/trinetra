@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trinetra/abs/pointer_legrise.dart';
+import 'package:trinetra/camera_view.dart';
+import 'package:trinetra/glutes/posePointer_sideLegRises.dart';
+import 'package:trinetra/glutes/poserPointer_DonkeyKick.dart';
 import 'package:trinetra/values.dart';
 
-import '../camera_view.dart';
-
-class LegRise extends StatefulWidget {
-  const LegRise({super.key});
+class SideLegRises extends StatefulWidget {
+  const SideLegRises({super.key});
 
   @override
-  State<LegRise> createState() => _LegRiseState();
+  State<SideLegRises> createState() => _SideLegRisesState();
 }
 
-class _LegRiseState extends State<LegRise> {
+class _SideLegRisesState extends State<SideLegRises> {
   PoseDetector poseDetector = GoogleMlKit.vision.poseDetector();
   bool isBusy = false;
   CustomPaint? customPaint;
@@ -21,9 +21,9 @@ class _LegRiseState extends State<LegRise> {
   Future<void> storeCalories() async {
     print("Calories Counted");
     final prefs = await SharedPreferences.getInstance();
-    var calories = prefs.getInt('abs') ?? 0;
+    var calories = prefs.getInt('quads') ?? 0;
     var cal = calories + (counter * 0.3).toInt();
-    prefs.setInt('abs', cal);
+    prefs.setInt('quads', cal);
     print("Counter: $counter \n Calories: $cal");
   }
 
@@ -64,21 +64,20 @@ class _LegRiseState extends State<LegRise> {
     // final faces = await faceDetector.processImage(inputImage);
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
-      final painter = PosePainter_legRise(
-        poses,
-        inputImage.inputImageData!.size,
-        inputImage.inputImageData!.imageRotation,
-        85,
-        105,
-        165,
-        180,
-        leftpos1,
-        leftpos2,
-        leftpos3,
-        rightpos1,
-        rightpos2,
-        rightpos3,
-      );
+      final painter = PosePointer_SideLegRises(
+          poses,
+          inputImage.inputImageData!.size,
+          inputImage.inputImageData!.imageRotation,
+          110,
+          125,
+          75,
+          95,
+          leftpos1,
+          leftpos2,
+          leftpos3,
+          rightpos1,
+          rightpos2,
+          rightpos3);
       customPaint = CustomPaint(painter: painter);
     } else {
       customPaint = null;

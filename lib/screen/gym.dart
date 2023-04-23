@@ -6,6 +6,12 @@ import 'package:trinetra/abs/elbow_plank.dart';
 import 'package:trinetra/abs/flutter_kicks.dart';
 import 'package:trinetra/abs/leg_rise.dart';
 import 'package:trinetra/abs/sit_ups.dart';
+import 'package:trinetra/glutes/donkey_kick.dart';
+import 'package:trinetra/glutes/sideLegrRises.dart';
+import 'package:trinetra/glutes/squats.dart';
+import 'package:trinetra/quads/climber.dart';
+import 'package:trinetra/quads/highKnees.dart';
+import 'package:trinetra/quads/lunges.dart';
 
 class Gym extends StatefulWidget {
   const Gym({super.key});
@@ -321,24 +327,49 @@ class _GymState extends State<Gym> {
                                 horizontal: 10,
                                 vertical: 5,
                               ),
-                              child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple.shade100,
-                                        Colors.deepPurple.shade50,
-                                      ],
-                                      begin: Alignment.center,
-                                      end: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  index == 0
+                                      ? Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Lunges(),
+                                          ),
+                                        )
+                                      : index == 1
+                                          ? Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HighKnees(),
+                                              ),
+                                            )
+                                          : Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Climber(),
+                                              ),
+                                            );
+                                },
+                                child: Material(
+                                  elevation: 3,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.deepPurple.shade100,
+                                          Colors.deepPurple.shade50,
+                                        ],
+                                        begin: Alignment.center,
+                                        end: Alignment.topRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    quads_count[index],
-                                    fit: BoxFit.cover,
+                                    child: Image.asset(
+                                      quads_count[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -375,24 +406,48 @@ class _GymState extends State<Gym> {
                                 horizontal: 10,
                                 vertical: 5,
                               ),
-                              child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple.shade50,
-                                        Colors.deepPurple.shade100,
-                                      ],
-                                      begin: Alignment.center,
-                                      end: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  index == 0
+                                      ? Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Squates(),
+                                          ),
+                                        )
+                                      : index == 1
+                                          ? Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => DonkeyKick(),
+                                              ),
+                                            )
+                                          : Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => SideLegRises(),
+                                              ),
+                                            );
+                                },
+                                child: Material(
+                                  elevation: 3,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.deepPurple.shade50,
+                                          Colors.deepPurple.shade100,
+                                        ],
+                                        begin: Alignment.center,
+                                        end: Alignment.topRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    glutes_count[index],
-                                    fit: BoxFit.cover,
+                                    child: Image.asset(
+                                      glutes_count[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
