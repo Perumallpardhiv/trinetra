@@ -1,6 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:trinetra/abs/bicycle_crunches.dart';
+import 'package:trinetra/abs/elbow_plank.dart';
+import 'package:trinetra/abs/flutter_kicks.dart';
+import 'package:trinetra/abs/leg_rise.dart';
+import 'package:trinetra/abs/sit_ups.dart';
 
 class Gym extends StatefulWidget {
   const Gym({super.key});
@@ -219,24 +224,67 @@ class _GymState extends State<Gym> {
                                 horizontal: 10,
                                 vertical: 5,
                               ),
-                              child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple.shade50,
-                                        Colors.deepPurple.shade100,
-                                      ],
-                                      begin: Alignment.center,
-                                      end: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  index == 0
+                                      ? Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => SitUps(),
+                                          ),
+                                        )
+                                      : index == 1
+                                          ? Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Bicycle_crunches(),
+                                              ),
+                                            )
+                                          : index == 2
+                                              ? Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LegRise(),
+                                                  ),
+                                                )
+                                              : index == 3
+                                                  ? Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            FlutterKicks(),
+                                                      ),
+                                                    )
+                                                  : Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ElbowPlank(),
+                                                      ),
+                                                    );
+                                  ;
+                                },
+                                child: Material(
+                                  elevation: 3,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.deepPurple.shade50,
+                                          Colors.deepPurple.shade100,
+                                        ],
+                                        begin: Alignment.center,
+                                        end: Alignment.topRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    abs_count[index],
-                                    fit: BoxFit.cover,
+                                    child: Image.asset(
+                                      abs_count[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
