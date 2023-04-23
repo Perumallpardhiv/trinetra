@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:trinetra/auth/auth.dart';
 import 'package:trinetra/screen/daily.dart';
 import 'package:trinetra/screen/gym.dart';
 import 'package:trinetra/screen/yoga.dart';

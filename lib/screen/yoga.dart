@@ -8,11 +8,13 @@ class Yoga extends StatefulWidget {
 }
 
 final yoga = [
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
-  'assets/images/situps.jpg',
+  'assets/images/y1.png',
+  'assets/images/y2.png',
+  'assets/images/y3.png',
+  'assets/images/y4.webp',
+  'assets/images/y5.png',
+  'assets/images/y6.jpg',
+  'assets/images/y7.jpg',
 ];
 
 class _YogaState extends State<Yoga> {

@@ -17,10 +17,10 @@ class _DailyStreakState extends State<DailyStreak> {
   List cal = [10.0, 20.0, 3.0, 8.5, 10.0, 56.0, 92.0];
 
   Map<String, double> dataMap = {
-    "Flutter": 5,
-    "React": 4,
-    "Xamarin": 2,
-    "Ionic": 7,
+    "Abs": 32,
+    "Quads": 65,
+    "Glutes": 29,
+    "Chest": 31,
   };
 
   @override
@@ -84,7 +84,8 @@ class _DailyStreakState extends State<DailyStreak> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text("Today's Data"),
                             ),
                           ),
@@ -95,7 +96,8 @@ class _DailyStreakState extends State<DailyStreak> {
                         child: Center(
                           child: PieChart(
                             dataMap: dataMap,
-                            chartRadius: MediaQuery.of(context).size.width / 1.8,
+                            chartRadius:
+                                MediaQuery.of(context).size.width / 1.8,
                             legendOptions: LegendOptions(
                               legendPosition: LegendPosition.bottom,
                             ),

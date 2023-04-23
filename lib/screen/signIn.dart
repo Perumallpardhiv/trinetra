@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trinetra/auth/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:trinetra/screen/signUp.dart';
@@ -168,6 +169,12 @@ class _SignInState extends State<SignIn> {
                             onTap: () async {
                               await authClass.emailSignIn(context,
                                   _emailCont.text.trim(), _pwdCont.text.trim());
+
+                              final prefs =
+                                  await SharedPreferences.getInstance();
+                              prefs.setBool('isLogged', true);
+                              prefs.setString('email', _emailCont.text.trim());
+                              prefs.setString('pwd', _pwdCont.text.trim());
                             },
                             child: Container(
                               height: 60,
@@ -217,18 +224,6 @@ class _SignInState extends State<SignIn> {
                                 },
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 2,
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Center(
-                              child: Text(
-                                " Forgot Password ? ",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
                           ),
                           SizedBox(
                             height: 15,

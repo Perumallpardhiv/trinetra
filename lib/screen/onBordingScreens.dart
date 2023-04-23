@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:trinetra/auth/auth.dart';
 import 'package:trinetra/homePage.dart';
 import 'package:trinetra/introScreens/page1.dart';
 import 'package:trinetra/introScreens/page2.dart';
@@ -17,6 +19,20 @@ class _OnBoardingState extends State<OnBoarding> {
   PageController _controller = PageController();
   bool onLastPage = false;
   bool onFirstPage = true;
+  bool isLogged = false;
+  AuthClass authClass = AuthClass();
+
+  Future<void> isLog() async {
+    SharedPreferences shares = await SharedPreferences.getInstance();
+    bool logg = shares.getBool('isLogged') ?? false;
+    logg ? isLogged = true : isLogged = false;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    isLog();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,33 +123,68 @@ class _OnBoardingState extends State<OnBoarding> {
                           );
                   },
                   child: onLastPage
-                      ? Row(
-                          children: [
-                            RawMaterialButton(
-                              onPressed: () {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => SignIn(),
+                      ? !isLogged
+                          ? Row(
+                              children: [
+                                RawMaterialButton(
+                                  onPressed: () {
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SignIn(),
+                                      ),
+                                      (route) => false,
+                                    );
+                                  },
+                                  fillColor: Colors.deepPurple,
+                                  focusColor: Colors.deepPurple,
+                                  shape: StadiumBorder(),
+                                  elevation: 0,
+                                  child: Text(
+                                    "SIGN IN",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                  (route) => false,
-                                );
-                              },
-                              fillColor: Colors.deepPurple,
-                              focusColor: Colors.deepPurple,
-                              shape: StadiumBorder(),
-                              elevation: 0,
-                              child: Text(
-                                "SIGN IN",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
                                 ),
-                              ),
-                            ),
-                          ],
-                        )
+                              ],
+                            )
+                          : Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () async {
+                                    SharedPreferences shares =
+                                        await SharedPreferences.getInstance();
+
+                                    var email = shares.getString('email') ??
+                                        "abc@gmail.com";
+                                    var pwd =
+                                        shares.getString('pwd') ?? "123123";
+
+                                    await authClass.emailSignIn(
+                                      context,
+                                      email.toString(),
+                                      pwd.toString(),
+                                    );
+                                  },
+                                  child: Text(
+                                    "NEXT",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward,
+                                  color: Colors.white,
+                                  size: 17,
+                                )
+                              ],
+                            )
                       : Row(
                           children: const [
                             Text(

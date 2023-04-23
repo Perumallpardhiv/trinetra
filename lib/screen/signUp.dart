@@ -12,6 +12,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   AuthClass authClass = AuthClass();
+  TextEditingController name = TextEditingController();
   TextEditingController _emailCont = TextEditingController();
   TextEditingController _pwdCont = TextEditingController();
   TextEditingController _conformPwdCont = TextEditingController();
@@ -112,6 +113,39 @@ class _SignUpState extends State<SignUp> {
                                       width: 1.5,
                                       color: Colors.deepPurple,
                                     ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          SizedBox(
+                            height: 60,
+                            width: MediaQuery.of(context).size.width - 60,
+                            child: TextFormField(
+                              autofillHints: [AutofillHints.email],
+                              keyboardType: TextInputType.emailAddress,
+                              controller: name,
+                              decoration: InputDecoration(
+                                fillColor: Color.fromARGB(255, 199, 142, 122),
+                                labelText: "Username",
+                                labelStyle: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(
+                                    width: 1.5,
+                                    color: Colors.deepPurple,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15),
+                                  borderSide: BorderSide(
+                                    width: 1.5,
+                                    color: Colors.deepPurple,
                                   ),
                                 ),
                               ),
@@ -229,6 +263,7 @@ class _SignUpState extends State<SignUp> {
                                     {
                                       'uid': user.uid,
                                       'email': _emailCont.text.trim(),
+                                      'username': name.text.trim(),
                                     },
                                   );
                                 }

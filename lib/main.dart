@@ -35,16 +35,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    login();
-  }
-
-  login() async {
-    String mail = "abc@gmail.com";
-    String pwd = "123123";
-    await authClass.emailSignIn(context, mail.trim(), pwd.trim());
-    final user = FirebaseAuth.instance.currentUser;
-    print(user!.uid);
-    print("done");
   }
 
   @override
@@ -59,7 +49,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Splash(),
     );
   }
 }

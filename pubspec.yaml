@@ -53,6 +53,9 @@ dependencies:
   file: ^6.1.4
   image_picker: ^0.8.7+4
   shared_preferences: ^2.1.0
+  share_plus: ^6.3.2
+  get: ^4.6.5
+  giff_dialog: ^1.0.1
 
 dev_dependencies:
   flutter_test:

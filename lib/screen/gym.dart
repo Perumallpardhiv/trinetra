@@ -15,6 +15,7 @@ import 'package:trinetra/glutes/squats.dart';
 import 'package:trinetra/quads/climber.dart';
 import 'package:trinetra/quads/highKnees.dart';
 import 'package:trinetra/quads/lunges.dart';
+import 'package:trinetra/screen/profile.dart';
 
 class Gym extends StatefulWidget {
   const Gym({super.key});
@@ -145,9 +146,15 @@ class _GymState extends State<Gym> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                   ),
-                  child: Image.asset(
-                    'assets/images/male.png',
-                    fit: BoxFit.cover,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AltarMenu()));
+                    },
+                    child: Image.asset(
+                      'assets/images/male.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
