@@ -13,7 +13,7 @@ final yoga = [
   'assets/images/y3.png',
   'assets/images/84.png',
   'assets/images/y5.png',
-  'assets/images/y6.pnh',
+  'assets/images/y6.png',
   'assets/images/y7.png',
 ];
 
