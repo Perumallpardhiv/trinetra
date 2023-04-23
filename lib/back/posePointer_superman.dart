@@ -42,7 +42,7 @@ class PosePointer_Superman extends CustomPainter {
       ..color = Colors.yellow;
 
     for (var pose in poses) {
-      final pos11 = pose.landmarks[pos1]!; //wrist
+      final pos11 = pose.landmarks[pos1]! ; //wrist
       final pos12 = pose.landmarks[pos2]!; //hip
       final pos13 = pose.landmarks[pos3]!; //knee
 
@@ -126,33 +126,6 @@ class PosePointer_Superman extends CustomPainter {
         1,
         dot,
       );
-
-      // canvas.drawCircle(
-      //   Offset(
-      //     translateX(left4.x, rotation, size, absoluteImageSize),
-      //     translateY(left4.y, rotation, size, absoluteImageSize),
-      //   ),
-      //   1,
-      //   dot,
-      // );
-
-      // canvas.drawCircle(
-      //   Offset(
-      //     translateX(left5.x, rotation, size, absoluteImageSize),
-      //     translateY(left5.y, rotation, size, absoluteImageSize),
-      //   ),
-      //   1,
-      //   dot,
-      // );
-
-      // canvas.drawCircle(
-      //   Offset(
-      //     translateX(left6.x, rotation, size, absoluteImageSize),
-      //     translateY(left6.y, rotation, size, absoluteImageSize),
-      //   ),
-      //   1,
-      //   dot,
-      // );
 
       void paintLine(
           PoseLandmarkType type1, PoseLandmarkType type2, Paint paintType) {

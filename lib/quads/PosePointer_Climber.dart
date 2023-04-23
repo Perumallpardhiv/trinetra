@@ -85,17 +85,9 @@ class PosePointer_Climber extends CustomPainter {
       //   angle1 = 360 - angle1;
       // }
       print("Angle: $angle");
-      print("Angle1: $angle1");
-      if ((angle > 15 &&
-              angle < 45 &&
-              angle1 > 0 &&
-              angle1 < 25 &&
-              stage != "down") ||
-          (angle1 > 15 &&
-              angle1 < 45 &&
-              angle > 0 &&
-              angle < 25 &&
-              stage != "down")) {
+      // print("Angle1: $angle1");
+      if ((angle > 295 && angle < 305 && stage != "down") ||
+          (angle1 > 295 && angle1 < 305 && stage != "down")) {
         stage = "down";
         color = Colors.green;
       }
@@ -106,16 +98,8 @@ class PosePointer_Climber extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if ((angle > 15 &&
-              angle < 45 &&
-              angle1 > 0 &&
-              angle1 < 25 &&
-              stage == "down") ||
-          (angle1 > 15 &&
-              angle1 < 45 &&
-              angle > 0 &&
-              angle < 25 &&
-              stage == "down")) {
+      if ((angle > 295 && angle < 305 && stage == "down") ||
+          (angle1 > 295 && angle1 < 305 && stage == "down")) {
         counter++;
         stage = "up";
       }

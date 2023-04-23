@@ -63,15 +63,6 @@ class PosePointer_DonkeyKick extends CustomPainter {
           180 ~/
           PI;
 
-      // angler = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
-      //         atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
-      //     180 ~/
-      //     PI;
-      // angle1r = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
-      //         atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
-      //     180 ~/
-      //     PI;
-
       if (angle < 0) {
         angle = angle + 360;
       }
@@ -93,15 +84,15 @@ class PosePointer_DonkeyKick extends CustomPainter {
       // }
       print("Angle: $angle");
       print("Angle1: $angle1");
-      if ((angle > 0 &&
-              angle < 20 &&
-              angle1 > 75 &&
-              angle1 < 105 &&
+      if ((angle > 335 &&
+              angle < 350 &&
+              angle1 > 280 &&
+              angle1 < 290 &&
               stage != "down") ||
-          (angle1 > 0 &&
-              angle1 < 20 &&
-              angle > 75 &&
-              angle < 105 &&
+          (angle1 > 335 &&
+              angle1 < 350 &&
+              angle > 280 &&
+              angle < 290 &&
               stage != "down")) {
         stage = "down";
         color = Colors.green;
@@ -113,15 +104,15 @@ class PosePointer_DonkeyKick extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if ((angle > 0 &&
-              angle < 20 &&
-              angle1 > 75 &&
-              angle1 < 105 &&
+      if ((angle > 335 &&
+              angle < 350 &&
+              angle1 > 280 &&
+              angle1 < 290 &&
               stage == "down") ||
-          (angle1 > 0 &&
-              angle1 < 20 &&
-              angle > 75 &&
-              angle < 105 &&
+          (angle1 > 335 &&
+              angle1 < 350 &&
+              angle > 280 &&
+              angle < 290 &&
               stage == "down")) {
         counter++;
         stage = "up";

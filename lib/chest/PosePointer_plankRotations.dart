@@ -91,7 +91,7 @@ class PosePointer_PlankRotations extends CustomPainter {
       // }
       print("Angle: $angle");
       // print("Angle1: $angle1");
-      if (angle > 80 && angle < 130 && stage != "down") {
+      if (angle > 150 && angle < 200 && stage != "down" && left6.y < left4.y) {
         stage = "down";
         color = Colors.green;
       }
@@ -102,7 +102,7 @@ class PosePointer_PlankRotations extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if (angle > 80 && angle < 130 && stage == "down") {
+      if (angle > 150 && angle < 200 && stage == "down" && left6.y < left4.y) {
         counter++;
         stage = "up";
       }

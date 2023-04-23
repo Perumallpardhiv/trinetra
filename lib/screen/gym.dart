@@ -568,14 +568,7 @@ class _GymState extends State<Gym> {
                                 vertical: 5,
                               ),
                               child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Superman(),
-                                    ),
-                                  );
-                                },
+                                onTap: () {},
                                 child: Material(
                                   elevation: 3,
                                   borderRadius: BorderRadius.circular(20),

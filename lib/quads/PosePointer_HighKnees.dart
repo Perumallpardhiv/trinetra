@@ -56,21 +56,14 @@ class PosePointer_HighKnees extends CustomPainter {
       final landmark5 = pose.landmarks[rightpos2]!; //knee
       final landmark6 = pose.landmarks[rightpos3]!; //ankle
 
-      angle = (atan2(landmark2.y - landmark1.y, landmark2.x - landmark1.x)) *
+      angle = (atan2(landmark1.y - landmark2.y, landmark1.x - landmark2.x) -
+              (atan2(landmark3.y - landmark2.y, landmark3.x - landmark2.x))) *
           180 ~/
           PI;
-      angle1 = (atan2(landmark5.y - landmark4.y, landmark5.x - landmark4.x)) *
+      angle1 = (atan2(landmark4.y - landmark5.y, landmark4.x - landmark5.x) -
+              (atan2(landmark6.y - landmark5.y, landmark6.x - landmark5.x))) *
           180 ~/
           PI;
-
-      // angler = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
-      //         atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
-      //     180 ~/
-      //     PI;
-      // angle1r = (atan2(landmark4.y - landmark3.y, landmark4.x - landmark3.x) -
-      //         atan2(landmark1.y - landmark3.y, landmark1.x - landmark3.x)) *
-      //     180 ~/
-      //     PI;
 
       if (angle < 0) {
         angle = angle + 360;
@@ -92,17 +85,9 @@ class PosePointer_HighKnees extends CustomPainter {
       //   angle1 = 360 - angle1;
       // }
       print("Angle: $angle");
-      print("Angle1: $angle1");
-      if ((angle > 0 &&
-              angle < 20 &&
-              angle1 > 75 &&
-              angle1 < 105 &&
-              stage != "down") ||
-          (angle1 > 0 &&
-              angle1 < 20 &&
-              angle > 75 &&
-              angle < 105 &&
-              stage != "down")) {
+      // print("Angle1: $angle1");
+      if ((angle > 151 && angle < 166 && stage != "down") ||
+          (angle1 > 151 && angle1 < 166 && stage != "down")) {
         stage = "down";
         color = Colors.green;
       }
@@ -113,16 +98,8 @@ class PosePointer_HighKnees extends CustomPainter {
         color = Colors.deepPurple;
         align = false;
       }
-      if ((angle > 0 &&
-              angle < 20 &&
-              angle1 > 75 &&
-              angle1 < 105 &&
-              stage == "down") ||
-          (angle1 > 0 &&
-              angle1 < 20 &&
-              angle > 75 &&
-              angle < 105 &&
-              stage == "down")) {
+      if ((angle > 151 && angle < 166 && stage == "down") ||
+          (angle1 > 151 && angle1 < 166 && stage == "down")) {
         counter++;
         stage = "up";
       }
