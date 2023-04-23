@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trinetra/back/posePointer_superman.dart';
 import 'package:trinetra/camera_view.dart';
-import 'package:trinetra/glutes/PosePointer_squats.dart';
 import 'package:trinetra/values.dart';
 
-class Squates extends StatefulWidget {
-  const Squates({super.key});
+class Superman extends StatefulWidget {
+  const Superman({super.key});
 
   @override
-  State<Squates> createState() => _SquatesState();
+  State<Superman> createState() => _SupermanState();
 }
 
-class _SquatesState extends State<Squates> {
+class _SupermanState extends State<Superman> {
   PoseDetector poseDetector = GoogleMlKit.vision.poseDetector();
   bool isBusy = false;
   CustomPaint? customPaint;
@@ -20,9 +20,9 @@ class _SquatesState extends State<Squates> {
   Future<void> storeCalories() async {
     print("Calories Counted");
     final prefs = await SharedPreferences.getInstance();
-    var calories = prefs.getInt('glutes') ?? 0;
+    var calories = prefs.getInt('back') ?? 0;
     var cal = calories + (counter * 0.3).toInt();
-    prefs.setInt('glutes', cal);
+    prefs.setInt('back', cal);
     print("Counter: $counter \n Calories: $cal");
   }
 
@@ -52,32 +52,25 @@ class _SquatesState extends State<Squates> {
     if (isBusy) return;
     isBusy = true;
     final poses = await poseDetector.processImage(inputImage);
-    final PoseLandmarkType leftpos1 = PoseLandmarkType.leftHip;
-    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftKnee;
-    final PoseLandmarkType leftpos3 = PoseLandmarkType.leftAnkle;
-
-    final PoseLandmarkType rightpos1 = PoseLandmarkType.rightHip;
-    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightKnee;
-    final PoseLandmarkType rightpos3 = PoseLandmarkType.rightAnkle;
+    final PoseLandmarkType pos1 = PoseLandmarkType.rightWrist;
+    final PoseLandmarkType pos2 = PoseLandmarkType.rightHip;
+    final PoseLandmarkType pos3 = PoseLandmarkType.rightKnee;
 
     // final faces = await faceDetector.processImage(inputImage);
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
-      final painter = PosePainter_Squates(
-          poses,
-          inputImage.inputImageData!.size,
-          inputImage.inputImageData!.imageRotation,
-          110,
-          125,
-          75,
-          95,
-          leftpos1,
-          leftpos2,
-          leftpos3,
-          rightpos1,
-          rightpos2,
-          rightpos3);
-      customPaint = CustomPaint(painter: painter);
+      final painter = PosePointer_Superman(
+              poses,
+              inputImage.inputImageData!.size,
+              inputImage.inputImageData!.imageRotation,
+              110,
+              125,
+              75,
+              95,
+              pos1,
+              pos2,
+              pos3),
+          customPaint = CustomPaint(painter: painter);
     } else {
       customPaint = null;
     }

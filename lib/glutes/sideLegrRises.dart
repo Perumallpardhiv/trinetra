@@ -21,9 +21,9 @@ class _SideLegRisesState extends State<SideLegRises> {
   Future<void> storeCalories() async {
     print("Calories Counted");
     final prefs = await SharedPreferences.getInstance();
-    var calories = prefs.getInt('quads') ?? 0;
+    var calories = prefs.getInt('glutes') ?? 0;
     var cal = calories + (counter * 0.3).toInt();
-    prefs.setInt('quads', cal);
+    prefs.setInt('glutes', cal);
     print("Counter: $counter \n Calories: $cal");
   }
 

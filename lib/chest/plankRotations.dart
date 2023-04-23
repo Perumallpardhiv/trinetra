@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trinetra/camera_view.dart';
-import 'package:trinetra/glutes/PosePointer_squats.dart';
+import 'package:trinetra/chest/PosePointer_plankRotations.dart';
 import 'package:trinetra/values.dart';
 
-class Squates extends StatefulWidget {
-  const Squates({super.key});
+import '../camera_view.dart';
+
+class PlankRotations extends StatefulWidget {
+  const PlankRotations({super.key});
 
   @override
-  State<Squates> createState() => _SquatesState();
+  State<PlankRotations> createState() => _PlankRotationsState();
 }
 
-class _SquatesState extends State<Squates> {
+class _PlankRotationsState extends State<PlankRotations> {
   PoseDetector poseDetector = GoogleMlKit.vision.poseDetector();
   bool isBusy = false;
   CustomPaint? customPaint;
@@ -20,9 +21,9 @@ class _SquatesState extends State<Squates> {
   Future<void> storeCalories() async {
     print("Calories Counted");
     final prefs = await SharedPreferences.getInstance();
-    var calories = prefs.getInt('glutes') ?? 0;
+    var calories = prefs.getInt('chest') ?? 0;
     var cal = calories + (counter * 0.3).toInt();
-    prefs.setInt('glutes', cal);
+    prefs.setInt('chest', cal);
     print("Counter: $counter \n Calories: $cal");
   }
 
@@ -52,18 +53,18 @@ class _SquatesState extends State<Squates> {
     if (isBusy) return;
     isBusy = true;
     final poses = await poseDetector.processImage(inputImage);
-    final PoseLandmarkType leftpos1 = PoseLandmarkType.leftHip;
-    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftKnee;
-    final PoseLandmarkType leftpos3 = PoseLandmarkType.leftAnkle;
+    final PoseLandmarkType leftpos1 = PoseLandmarkType.leftWrist;
+    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftElbow;
+    final PoseLandmarkType leftpos3 = PoseLandmarkType.leftShoulder;
 
-    final PoseLandmarkType rightpos1 = PoseLandmarkType.rightHip;
-    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightKnee;
-    final PoseLandmarkType rightpos3 = PoseLandmarkType.rightAnkle;
+    final PoseLandmarkType rightpos1 = PoseLandmarkType.rightWrist;
+    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightElbow;
+    final PoseLandmarkType rightpos3 = PoseLandmarkType.rightShoulder;
 
     // final faces = await faceDetector.processImage(inputImage);
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
-      final painter = PosePainter_Squates(
+      final painter = PosePointer_PlankRotations(
           poses,
           inputImage.inputImageData!.size,
           inputImage.inputImageData!.imageRotation,

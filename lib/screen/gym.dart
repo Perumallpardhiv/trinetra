@@ -6,6 +6,9 @@ import 'package:trinetra/abs/elbow_plank.dart';
 import 'package:trinetra/abs/flutter_kicks.dart';
 import 'package:trinetra/abs/leg_rise.dart';
 import 'package:trinetra/abs/sit_ups.dart';
+import 'package:trinetra/back/superman.dart';
+import 'package:trinetra/chest/dumbells.dart';
+import 'package:trinetra/chest/plankRotations.dart';
 import 'package:trinetra/glutes/donkey_kick.dart';
 import 'package:trinetra/glutes/sideLegrRises.dart';
 import 'package:trinetra/glutes/squats.dart';
@@ -52,12 +55,11 @@ final glutes_count = [
 
 final back_count = [
   'assets/images/superman.jpg',
-  'assets/images/pushups.jpg',
 ];
 
 final chest_count = [
   'assets/images/plankroatation.png',
-  'assets/images/shoulder_taps.png',
+  'assets/images/dumbel.png',
 ];
 
 class _GymState extends State<Gym> {
@@ -419,13 +421,15 @@ class _GymState extends State<Gym> {
                                           ? Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => DonkeyKick(),
+                                                builder: (context) =>
+                                                    DonkeyKick(),
                                               ),
                                             )
                                           : Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => SideLegRises(),
+                                                builder: (context) =>
+                                                    SideLegRises(),
                                               ),
                                             );
                                 },
@@ -484,24 +488,49 @@ class _GymState extends State<Gym> {
                                 horizontal: 10,
                                 vertical: 5,
                               ),
-                              child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple.shade100,
-                                        Colors.deepPurple.shade50,
-                                      ],
-                                      begin: Alignment.center,
-                                      end: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  index == 0
+                                      ? Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                PlankRotations(),
+                                          ),
+                                        )
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => dumbells(),
+                                          ),
+                                        );
+                                },
+                                child: Material(
+                                  elevation: 3,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.deepPurple.shade100,
+                                          Colors.deepPurple.shade50,
+                                        ],
+                                        begin: Alignment.center,
+                                        end: Alignment.topRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    chest_count[index],
-                                    fit: BoxFit.cover,
+                                    child: Padding(
+                                      padding: index == 0
+                                          ? EdgeInsets.symmetric(horizontal: 0)
+                                          : EdgeInsets.symmetric(
+                                              horizontal: 50,
+                                            ),
+                                      child: Image.asset(
+                                        chest_count[index],
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -538,24 +567,34 @@ class _GymState extends State<Gym> {
                                 horizontal: 10,
                                 vertical: 5,
                               ),
-                              child: Material(
-                                elevation: 3,
-                                borderRadius: BorderRadius.circular(20),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.deepPurple.shade50,
-                                        Colors.deepPurple.shade100,
-                                      ],
-                                      begin: Alignment.center,
-                                      end: Alignment.topRight,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Superman(),
                                     ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Image.asset(
-                                    back_count[index],
-                                    fit: BoxFit.cover,
+                                  );
+                                },
+                                child: Material(
+                                  elevation: 3,
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.deepPurple.shade50,
+                                          Colors.deepPurple.shade100,
+                                        ],
+                                        begin: Alignment.center,
+                                        end: Alignment.topRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Image.asset(
+                                      back_count[index],
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),

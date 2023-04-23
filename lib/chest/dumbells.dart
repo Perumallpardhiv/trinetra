@@ -1,29 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trinetra/camera_view.dart';
-import 'package:trinetra/glutes/PosePointer_squats.dart';
+import 'package:trinetra/chest/PosePointer_dumbels.dart';
 import 'package:trinetra/values.dart';
 
-class Squates extends StatefulWidget {
-  const Squates({super.key});
+import '../camera_view.dart';
+
+class dumbells extends StatefulWidget {
+  const dumbells({Key? key}) : super(key: key);
 
   @override
-  State<Squates> createState() => _SquatesState();
+  _dumbellsState createState() => _dumbellsState();
 }
 
-class _SquatesState extends State<Squates> {
+class _dumbellsState extends State<dumbells> {
   PoseDetector poseDetector = GoogleMlKit.vision.poseDetector();
+  final PoseLandmarkType leftpos1 = PoseLandmarkType.leftShoulder;
+  final PoseLandmarkType leftpos2 = PoseLandmarkType.leftElbow;
+  final PoseLandmarkType leftpos3 = PoseLandmarkType.leftWrist;
+
+  final PoseLandmarkType rightpos1 = PoseLandmarkType.rightShoulder;
+  final PoseLandmarkType rightpos2 = PoseLandmarkType.rightElbow;
+  final PoseLandmarkType rightpos3 = PoseLandmarkType.rightWrist;
+
   bool isBusy = false;
   CustomPaint? customPaint;
 
   Future<void> storeCalories() async {
     print("Calories Counted");
+    calculate();
+  }
+
+  Future<void> calculate() async {
     final prefs = await SharedPreferences.getInstance();
-    var calories = prefs.getInt('glutes') ?? 0;
-    var cal = calories + (counter * 0.3).toInt();
-    prefs.setInt('glutes', cal);
-    print("Counter: $counter \n Calories: $cal");
+    var calories = prefs.getInt('chest') ?? 0;
+    var cal = calories + (counter * 0.02).toInt();
+    prefs.setInt('chest', cal);
+    print("Calories Counted:${cal}");
   }
 
   @override
@@ -32,7 +45,6 @@ class _SquatesState extends State<Squates> {
     super.initState();
   }
 
-  @override
   void dispose() async {
     super.dispose();
     await storeCalories();
@@ -52,31 +64,25 @@ class _SquatesState extends State<Squates> {
     if (isBusy) return;
     isBusy = true;
     final poses = await poseDetector.processImage(inputImage);
-    final PoseLandmarkType leftpos1 = PoseLandmarkType.leftHip;
-    final PoseLandmarkType leftpos2 = PoseLandmarkType.leftKnee;
-    final PoseLandmarkType leftpos3 = PoseLandmarkType.leftAnkle;
-
-    final PoseLandmarkType rightpos1 = PoseLandmarkType.rightHip;
-    final PoseLandmarkType rightpos2 = PoseLandmarkType.rightKnee;
-    final PoseLandmarkType rightpos3 = PoseLandmarkType.rightAnkle;
-
     // final faces = await faceDetector.processImage(inputImage);
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
-      final painter = PosePainter_Squates(
-          poses,
-          inputImage.inputImageData!.size,
-          inputImage.inputImageData!.imageRotation,
-          110,
-          125,
-          75,
-          95,
-          leftpos1,
-          leftpos2,
-          leftpos3,
-          rightpos1,
-          rightpos2,
-          rightpos3);
+      final painter = PosePainter_dumbels(
+        poses,
+        inputImage.inputImageData!.size,
+        inputImage.inputImageData!.imageRotation,
+        50,
+        70,
+        120,
+        140,
+        leftpos1,
+        leftpos2,
+        leftpos3,
+        rightpos1,
+        rightpos2,
+        rightpos3,
+      );
+
       customPaint = CustomPaint(painter: painter);
     } else {
       customPaint = null;
