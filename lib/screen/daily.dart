@@ -43,12 +43,13 @@ class _DailyStreakState extends State<DailyStreak> {
                     return Center(child: Text("Loading ..."));
                   }
                   var details = snapshot.data;
+                  var name = details!['username'] ?? "John";
                   return Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: ListTile(
-                          title: Text("Hi, ${details!['username']}"),
+                          title: Text("Hi, ${name}"),
                           subtitle: Text("Let's check your activity"),
                           trailing: Container(
                             decoration: BoxDecoration(
