@@ -44,40 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCVB1SLbEO-LYEARt51GcD97CfYGVr8fFI',
-    appId: '1:302475697728:web:e3ada96d2774543df289a5',
-    messagingSenderId: '302475697728',
-    projectId: 'trinetra-8cc8d',
-    authDomain: 'trinetra-8cc8d.firebaseapp.com',
-    storageBucket: 'trinetra-8cc8d.appspot.com',
-    measurementId: 'G-MSN6GLF3PS',
+    apiKey: 'AIzaSyDiopeEqdswIfVrzu_WUAfLHQOO6krgUH4',
+    appId: '1:842183685538:web:2b2032ead863856c72aefb',
+    messagingSenderId: '842183685538',
+    projectId: 'trinetra-flutter',
+    authDomain: 'trinetra-flutter.firebaseapp.com',
+    storageBucket: 'trinetra-flutter.appspot.com',
+    measurementId: 'G-16WFX5FMSC',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDrV43M5GwywCmlMhYhkMCwvTlGQI08wwg',
-    appId: '1:302475697728:android:897621a5bb0f7eb6f289a5',
-    messagingSenderId: '302475697728',
-    projectId: 'trinetra-8cc8d',
-    storageBucket: 'trinetra-8cc8d.appspot.com',
+    apiKey: 'AIzaSyBmBr6ITfjjM-I3cyy3fbtv-BzHo_C35t4',
+    appId: '1:842183685538:android:8b6d279928548b4072aefb',
+    messagingSenderId: '842183685538',
+    projectId: 'trinetra-flutter',
+    storageBucket: 'trinetra-flutter.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAzfHSuMoHlaZXJSNnNtp-Y_FTbZP7O-ic',
-    appId: '1:302475697728:ios:eff6a6da31e3b94af289a5',
-    messagingSenderId: '302475697728',
-    projectId: 'trinetra-8cc8d',
-    storageBucket: 'trinetra-8cc8d.appspot.com',
-    iosClientId: '302475697728-fuupn0u8julmtt9udmrarv92lpj00qml.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCxgxg83UNdNXT4kM5QSrYsZ6W5A4WOtts',
+    appId: '1:842183685538:ios:aadf9ef4f601dc2672aefb',
+    messagingSenderId: '842183685538',
+    projectId: 'trinetra-flutter',
+    storageBucket: 'trinetra-flutter.appspot.com',
+    iosClientId: '842183685538-6ta5fdbh7nl202fn085sourn3etar8i8.apps.googleusercontent.com',
     iosBundleId: 'com.example.trinetra',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAzfHSuMoHlaZXJSNnNtp-Y_FTbZP7O-ic',
-    appId: '1:302475697728:ios:eff6a6da31e3b94af289a5',
-    messagingSenderId: '302475697728',
-    projectId: 'trinetra-8cc8d',
-    storageBucket: 'trinetra-8cc8d.appspot.com',
-    iosClientId: '302475697728-fuupn0u8julmtt9udmrarv92lpj00qml.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCxgxg83UNdNXT4kM5QSrYsZ6W5A4WOtts',
+    appId: '1:842183685538:ios:aadf9ef4f601dc2672aefb',
+    messagingSenderId: '842183685538',
+    projectId: 'trinetra-flutter',
+    storageBucket: 'trinetra-flutter.appspot.com',
+    iosClientId: '842183685538-6ta5fdbh7nl202fn085sourn3etar8i8.apps.googleusercontent.com',
     iosBundleId: 'com.example.trinetra',
   );
 }

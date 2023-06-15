@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
                   color: Colors.deepPurple[300],
                   child: Padding(
                     padding: EdgeInsets.only(top: size.height * 0.12),
-                    child: Column(
+                    child: const Column(
                       children: [
                         Text(
                           'SIGN IN',
@@ -70,7 +70,7 @@ class _SignInState extends State<SignIn> {
                 child: Container(
                   height: size.height * 0.7,
                   width: size.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(80),
@@ -90,25 +90,26 @@ class _SignInState extends State<SignIn> {
                               height: 60,
                               width: MediaQuery.of(context).size.width - 60,
                               child: TextFormField(
-                                autofillHints: [AutofillHints.email],
+                                autofillHints: const [AutofillHints.email],
                                 keyboardType: TextInputType.emailAddress,
                                 controller: _emailCont,
                                 decoration: InputDecoration(
-                                  fillColor: Color.fromARGB(255, 199, 142, 122),
+                                  fillColor:
+                                      const Color.fromARGB(255, 199, 142, 122),
                                   labelText: "Email ...",
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     color: Colors.grey,
                                   ),
                                   enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       width: 1.5,
                                       color: Colors.deepPurple,
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(15),
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       width: 1.5,
                                       color: Colors.deepPurple,
                                     ),
@@ -117,10 +118,10 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
-                          Container(
+                          SizedBox(
                             height: 60,
                             width: MediaQuery.of(context).size.width - 60,
                             child: TextFormField(
@@ -142,19 +143,19 @@ class _SignInState extends State<SignIn> {
                                   },
                                 ),
                                 labelText: "Password ...",
-                                labelStyle: TextStyle(
+                                labelStyle: const TextStyle(
                                   color: Colors.grey,
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     width: 1.5,
                                     color: Colors.deepPurple,
                                   ),
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     width: 1.5,
                                     color: Colors.deepPurple,
                                   ),
@@ -162,21 +163,24 @@ class _SignInState extends State<SignIn> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 30,
-                          ),
+                          const SizedBox(height: 30),
                           GestureDetector(
                             onTap: () async {
-                              await authClass.emailSignIn(context,
-                                  _emailCont.text.trim(), _pwdCont.text.trim());
-
+                              await authClass.emailSignIn(
+                                context,
+                                _emailCont.text.trim(),
+                                _pwdCont.text.trim(),
+                              );
                               final prefs =
                                   await SharedPreferences.getInstance();
                               prefs.setBool('isLogged', true);
                               prefs.setString('email', _emailCont.text.trim());
                               prefs.setString('pwd', _pwdCont.text.trim());
+
+                              print(prefs.getString('email'));
+                              print(prefs.getString('pwd'));
                             },
-                            child: Container(
+                            child: SizedBox(
                               height: 60,
                               width: MediaQuery.of(context).size.width - 60,
                               child: Card(
@@ -184,33 +188,30 @@ class _SignInState extends State<SignIn> {
                                 color: Colors.deepPurple,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
-                                  side: BorderSide(
+                                  side: const BorderSide(
                                     width: 1.5,
                                     color: Colors.deepPurple,
                                   ),
                                 ),
-                                child: Center(
-                                    child: Text(
-                                  'SIGN IN',
-                                  style: TextStyle(
-                                    color: Colors.white,
+                                child: const Center(
+                                  child: Text(
+                                    'SIGN IN',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                )),
+                                ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("If you don't have account? "),
-                              SizedBox(
-                                width: 1,
-                              ),
+                              const Text("If you don't have account? "),
+                              const SizedBox(width: 1),
                               GestureDetector(
-                                child: Text(
+                                child: const Text(
                                   " SignUp ",
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
@@ -218,23 +219,19 @@ class _SignInState extends State<SignIn> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => SignUp(),
+                                      builder: (context) => const SignUp(),
                                     ),
                                   );
                                 },
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Text(
+                          const SizedBox(height: 15),
+                          const Text(
                             "Or",
                             style: TextStyle(color: Colors.grey, fontSize: 18),
                           ),
-                          SizedBox(
-                            height: 15,
-                          ),
+                          const SizedBox(height: 15),
                           GestureDetector(
                             onTap: () async {
                               await authClass.googleSignIn(context);

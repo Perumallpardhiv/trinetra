@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trinetra/auth/auth.dart';
+import 'package:trinetra/homePage.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -250,9 +251,10 @@ class _SignUpState extends State<SignUp> {
                               if (_pwdCont.text.trim() ==
                                   _conformPwdCont.text.trim()) {
                                 await authClass.emailSignUp(
-                                    context,
-                                    _emailCont.text.trim(),
-                                    _pwdCont.text.trim());
+                                  context,
+                                  _emailCont.text.trim(),
+                                  _pwdCont.text.trim(),
+                                );
 
                                 final prefs =
                                     await SharedPreferences.getInstance();
@@ -262,23 +264,26 @@ class _SignUpState extends State<SignUp> {
                                 prefs.setString('pwd', _pwdCont.text.trim());
 
                                 // add user details for profile page
-                                var user = FirebaseAuth.instance.currentUser;
-                                if (user != null) {
-                                  await FirebaseFirestore.instance
-                                      .collection("users")
-                                      .doc(user.uid)
-                                      .set(
-                                    {
-                                      'uid': user.uid,
-                                      'email': _emailCont.text.trim(),
-                                      'username': name.text.trim(),
-                                    },
-                                  );
-                                }
+                                var user =
+                                    await FirebaseAuth.instance.currentUser;
+                                print(user!.uid);
+                                await FirebaseFirestore.instance
+                                    .collection("users")
+                                    .doc(user.uid)
+                                    .set(
+                                  {
+                                    'uid': user.uid,
+                                    'email': _emailCont.text.trim(),
+                                    'username': name.text.trim(),
+                                  },
+                                );
+                                print(user.uid);
                               } else {
-                                final snackbar = SnackBar(
-                                    content: Text(
-                                        "Your password and confirmation password do not match."));
+                                const snackbar = SnackBar(
+                                  content: Text(
+                                    "Your password and confirmation password do not match.",
+                                  ),
+                                );
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackbar);
                               }

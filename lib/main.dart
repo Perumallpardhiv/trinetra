@@ -1,15 +1,10 @@
 import 'package:camera/camera.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trinetra/auth/auth.dart';
 import 'package:trinetra/firebase_options.dart';
-import 'package:trinetra/homePage.dart';
 import 'package:trinetra/introScreens/splash.dart';
-import 'package:trinetra/screen/onBordingScreens.dart';
-import 'package:trinetra/screen/signIn.dart';
-import 'package:trinetra/screen/signUp.dart';
 
 List<CameraDescription>? cameras;
 
