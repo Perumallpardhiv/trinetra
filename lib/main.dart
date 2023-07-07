@@ -11,6 +11,7 @@ List<CameraDescription>? cameras;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: "trinetra-fitness",
     options: DefaultFirebaseOptions.currentPlatform,
   );
   cameras = await availableCameras();

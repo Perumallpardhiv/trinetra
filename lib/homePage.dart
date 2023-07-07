@@ -18,15 +18,15 @@ class _HomePageState extends State<HomePage> {
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
   final items = <Widget>[
-    Icon(Icons.stacked_bar_chart_outlined),
-    Icon(Icons.fitness_center),
-    Icon(Icons.sports_gymnastics_outlined),
+    const Icon(Icons.stacked_bar_chart_outlined),
+    const Icon(Icons.fitness_center),
+    const Icon(Icons.sports_gymnastics_outlined),
   ];
 
   final screens = [
-    DailyStreak(),
-    Gym(),
-    Yoga(),
+    const DailyStreak(),
+    const Gym(),
+    const Yoga(),
   ];
 
   // final navigationState = navigationKey.currentState;
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       body: screens[index],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          iconTheme: IconThemeData(
+          iconTheme: const IconThemeData(
             color: Colors.white,
           ),
         ),

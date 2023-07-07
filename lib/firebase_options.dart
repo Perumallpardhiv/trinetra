@@ -44,40 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDiopeEqdswIfVrzu_WUAfLHQOO6krgUH4',
-    appId: '1:842183685538:web:2b2032ead863856c72aefb',
-    messagingSenderId: '842183685538',
-    projectId: 'trinetra-flutter',
-    authDomain: 'trinetra-flutter.firebaseapp.com',
-    storageBucket: 'trinetra-flutter.appspot.com',
-    measurementId: 'G-16WFX5FMSC',
+    apiKey: 'AIzaSyBH90Sc5wOGGbvJpj0-jOFYHZirnLMlhe4',
+    appId: '1:561726455254:web:4191cfbf955006aaca3877',
+    messagingSenderId: '561726455254',
+    projectId: 'trinetra-fitness',
+    authDomain: 'trinetra-fitness.firebaseapp.com',
+    storageBucket: 'trinetra-fitness.appspot.com',
+    measurementId: 'G-RWY2CS30B3',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBmBr6ITfjjM-I3cyy3fbtv-BzHo_C35t4',
-    appId: '1:842183685538:android:8b6d279928548b4072aefb',
-    messagingSenderId: '842183685538',
-    projectId: 'trinetra-flutter',
-    storageBucket: 'trinetra-flutter.appspot.com',
+    apiKey: 'AIzaSyAKszIt3lSmy0dLL_Zu1UMNEP6NORU0XsQ',
+    appId: '1:561726455254:android:f9ebefc775bc0ee3ca3877',
+    messagingSenderId: '561726455254',
+    projectId: 'trinetra-fitness',
+    storageBucket: 'trinetra-fitness.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCxgxg83UNdNXT4kM5QSrYsZ6W5A4WOtts',
-    appId: '1:842183685538:ios:aadf9ef4f601dc2672aefb',
-    messagingSenderId: '842183685538',
-    projectId: 'trinetra-flutter',
-    storageBucket: 'trinetra-flutter.appspot.com',
-    iosClientId: '842183685538-6ta5fdbh7nl202fn085sourn3etar8i8.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCoOxLvqYAtap-cRx7KmT-pKUvcwqHYE4Q',
+    appId: '1:561726455254:ios:0766a85b9340fb95ca3877',
+    messagingSenderId: '561726455254',
+    projectId: 'trinetra-fitness',
+    storageBucket: 'trinetra-fitness.appspot.com',
+    iosClientId: '561726455254-43r8a3pb8q5dv3gk1u4f7mluurqrk6eb.apps.googleusercontent.com',
     iosBundleId: 'com.example.trinetra',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCxgxg83UNdNXT4kM5QSrYsZ6W5A4WOtts',
-    appId: '1:842183685538:ios:aadf9ef4f601dc2672aefb',
-    messagingSenderId: '842183685538',
-    projectId: 'trinetra-flutter',
-    storageBucket: 'trinetra-flutter.appspot.com',
-    iosClientId: '842183685538-6ta5fdbh7nl202fn085sourn3etar8i8.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCoOxLvqYAtap-cRx7KmT-pKUvcwqHYE4Q',
+    appId: '1:561726455254:ios:0766a85b9340fb95ca3877',
+    messagingSenderId: '561726455254',
+    projectId: 'trinetra-fitness',
+    storageBucket: 'trinetra-fitness.appspot.com',
+    iosClientId: '561726455254-43r8a3pb8q5dv3gk1u4f7mluurqrk6eb.apps.googleusercontent.com',
     iosBundleId: 'com.example.trinetra',
   );
 }

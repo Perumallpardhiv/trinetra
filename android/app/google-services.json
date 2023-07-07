@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "842183685538",
-    "project_id": "trinetra-flutter",
-    "storage_bucket": "trinetra-flutter.appspot.com"
+    "project_number": "561726455254",
+    "project_id": "trinetra-fitness",
+    "storage_bucket": "trinetra-fitness.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:842183685538:android:8b6d279928548b4072aefb",
+        "mobilesdk_app_id": "1:561726455254:android:f9ebefc775bc0ee3ca3877",
         "android_client_info": {
           "package_name": "com.example.trinetra"
         }
       },
       "oauth_client": [
         {
-          "client_id": "842183685538-bng428envgtk4m2qergn4ftua2jgmb2n.apps.googleusercontent.com",
+          "client_id": "561726455254-ev7i8jvfcs7fbn39nic1vvag3nkbpgpb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBmBr6ITfjjM-I3cyy3fbtv-BzHo_C35t4"
+          "current_key": "AIzaSyAKszIt3lSmy0dLL_Zu1UMNEP6NORU0XsQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "842183685538-bng428envgtk4m2qergn4ftua2jgmb2n.apps.googleusercontent.com",
+              "client_id": "561726455254-0nnv8jd3m9l9i0tdagt65k1lnrcjer68.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "561726455254-43r8a3pb8q5dv3gk1u4f7mluurqrk6eb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.trinetra"
+              }
             }
           ]
         }
